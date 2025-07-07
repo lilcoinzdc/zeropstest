@@ -1,5 +1,5 @@
 zerops:
-  - setup: docker
+  - setup: ubuntuu
     run:
       base: docker@26.1
       prepareCommands:
