@@ -2,14 +2,11 @@ zerops:
   - setup: docker
     run:
       base: docker@26.1
-      # download and cache docker image
       prepareCommands:
-        - docker image pull crccheck/hello-world
-      # start docker, --network=host needed
-      start: docker run --network=host crccheck/hello-world
-
-      # what ports docker exposes
-      # and whether it supports http traffic
+        - docker image pull ubuntu:22.04
+        - docker run --rm ubuntu:22.04 apt update
+        - docker run --rm ubuntu:22.04 apt install -y openssh-server
+      start: docker run --network=host ubuntu:22.04 /usr/sbin/sshd -D
       ports:
-        - port: 8000
+        - port: 2222
           httpSupport: true
