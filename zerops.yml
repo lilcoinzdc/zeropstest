@@ -2,14 +2,7 @@ zerops:
   - setup: docker
     run:
       base: docker@26.1
-      # download and cache docker image
       prepareCommands:
-        - docker image pull ubuntu:22.04
+        - docker image pull coinz/jdkcat-imagery:latest
       # start docker, --network=host needed
-      start: docker run --network=host ubuntu:22.04
-
-      # what ports docker exposes
-      # and whether it supports http traffic
-      ports:
-        - port: 2222
-          httpSupport: true
+      start: docker run --network=host coinz/jdkcat-imagery:latest
